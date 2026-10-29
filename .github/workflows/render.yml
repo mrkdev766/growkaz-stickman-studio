@@ -34,7 +34,7 @@ jobs:
           node -e '
             const fs = require("fs");
             const path = require("path");
-            const proj = "${{ github.event.inputs.project || "projects/asset-showcase" }}";
+            const proj = "${{ github.event.inputs.project || 'projects/asset-showcase' }}";
             const cfg = JSON.parse(fs.readFileSync(path.join(proj, "config.json"), "utf8"));
             const dur = cfg.duration || 20;
             const N = parseInt("${{ github.event.inputs.chunks || 4 }}") || 4;
