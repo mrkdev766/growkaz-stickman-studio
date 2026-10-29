@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrowKaz Stickman Studio — Review & Approval Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "/node_modules/three/build/three.module.js",
+        "three/addons/": "/node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #07090e;
+      color: #f1f5f9;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .viewport-container {
+      box-shadow: 0 25px 60px -15px rgba(0, 229, 255, 0.25), 0 0 35px -5px rgba(249, 115, 22, 0.2);
+    }
+    input[type=range] { -webkit-appearance: none; background: transparent; }
+    input[type=range]::-webkit-slider-runnable-track {
+      height: 8px; border-radius: 999px; background: #1e293b;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%;
+      background: #00e5ff; margin-top: -5px; cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.8); border: 2px solid #ffffff;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col xl:flex-row items-center justify-center p-4 xl:p-6 gap-6">
+
+  <!-- Left: Main Viewport (auto-adapts to 16:9 Landscape or 9:16 Shorts) -->
+  <div class="flex flex-col items-center gap-3 flex-shrink-0">
+    <div id="stage-frame" class="relative viewport-container rounded-2xl overflow-hidden border-2 border-slate-800 bg-[#0284c7] flex items-center justify-center">
+      <canvas id="main" class="block"></canvas>
+
+      <!-- 9:16 Caption Safe-Zone Guide Overlay (Top 26%) -->
+      <div id="caption-guide" class="hidden absolute top-0 left-0 right-0 h-[26%] border-b-2 border-dashed border-amber-300/60 bg-black/40 pointer-events-none flex flex-col items-center justify-center text-center p-2">
+        <span class="text-[11px] font-extrabold uppercase tracking-widest text-amber-300 bg-black/70 px-3 py-1 rounded-full shadow">
+          ⚠️ 9:16 Caption Safe Zone (Top 26%)
+        </span>
+        <span class="text-[9px] text-amber-200/70 mt-1">Keep characters/props below this line to prevent subtitle clipping</span>
+      </div>
+    </div>
+
+    <!-- Quick Playback Transport Bar under Canvas -->
+    <div class="w-full bg-slate-900/90 border border-slate-800/80 p-3 rounded-2xl flex items-center gap-3">
+      <button id="btn-play" onclick="togglePlay()" class="w-10 h-10 rounded-xl bg-orange-500 hover:bg-orange-400 text-slate-950 flex items-center justify-center font-bold transition shadow-lg shadow-orange-500/20">
+        <svg id="icon-pause" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+        <svg id="icon-play" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+
+      <button id="btn-loop-beat" onclick="toggleLoopBeat()" title="Loop Current Beat" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 flex items-center gap-1.5 transition">
+        <span id="loop-dot" class="w-2 h-2 rounded-full bg-slate-500"></span>
+        <span>Loop Beat</span>
+      </button>
+
+      <input id="timeline-slider" type="range" min="0" max="20" step="0.02" value="0" class="flex-1">
+
+      <span id="hud-time" class="text-xs mono font-bold text-sky-400 w-24 text-right">0.00s / 0.00s</span>
+    </div>
+  </div>
+
+  <!-- Right: Review & Approval Studio Deck -->
+  <div class="w-full max-w-lg flex flex-col gap-4 bg-slate-900/95 border border-slate-800 p-5 rounded-3xl shadow-2xl max-h-[92vh] overflow-y-auto">
+    <!-- Header info -->
+    <div class="border-b border-slate-800 pb-3">
+      <div class="flex items-center justify-between gap-2">
+        <span id="badge-aspect" class="px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wider bg-sky-500/15 text-sky-400 border border-sky-500/30 rounded-full">
+          16:9 Master
+        </span>
+        <span id="badge-approved-count" class="text-xs mono font-bold text-emerald-400">0 / 0 Beats Approved</span>
+      </div>
+      <h1 id="proj-title" class="text-xl font-extrabold text-white mt-2 tracking-tight">Studio Review</h1>
+      <p id="proj-desc" class="text-xs text-slate-400 mt-1">
+        Review every beat, scrub in real-time, flag tweaks, and approve for cloud rendering.
+      </p>
+    </div>
+
+    <!-- Quick Utilities -->
+    <div class="grid grid-cols-2 gap-2">
+      <button onclick="toggleSafeZone()" id="btn-safezone" class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300 transition flex items-center justify-center gap-1.5">
+        <span>🔲 Caption Safe Zone</span>
+      </button>
+      <button onclick="reloadScene()" class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300 transition flex items-center justify-center gap-1.5">
+        <span>⚡ Hot Reload Code</span>
+      </button>
+    </div>
+
+    <!-- Beat Breakdown Cards (Generated dynamically) -->
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center justify-between">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mono">Scene Beats Breakdown</span>
+        <button onclick="approveAllBeats()" class="text-[11px] text-emerald-400 hover:underline font-bold">Approve All</button>
+      </div>
+
+      <div id="beats-container" class="flex flex-col gap-2.5">
+        <!-- Beat cards injected by JS -->
+      </div>
+    </div>
+
+    <!-- Cloud Render Trigger Panel -->
+    <div class="mt-2 pt-3 border-t border-slate-800 flex flex-col gap-2">
+      <div class="flex items-center justify-between text-xs font-bold text-slate-300">
+        <span>Cloud Matrix Rendering</span>
+        <span class="text-emerald-400">4 Parallel Runners Ready</span>
+      </div>
+      <button onclick="triggerCloudRender()" id="btn-cloud-render" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-extrabold text-sm tracking-wide shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2">
+        <span>🚀 Render Master Video on Cloud (GitHub Actions)</span>
+      </button>
+      <div id="cloud-status" class="hidden text-xs text-slate-400 text-center mono py-1"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { E, V, setStyle, getShot, clamp, ease, prog, alpha, text } from '/engine/player.js';
+
+    let isPlaying = true;
+    let loopBeat = false;
+    let currentBeatIndex = 0;
+    let beats = [];
+    let reviewData = {};
+    let lastFrameTime = performance.now();
+
+    window.togglePlay = function() {
+      isPlaying = !isPlaying;
+      updatePlayIcons();
+    };
+
+    window.toggleLoopBeat = function() {
+      loopBeat = !loopBeat;
+      document.getElementById('loop-dot').className = loopBeat ? 'w-2 h-2 rounded-full bg-emerald-400' : 'w-2 h-2 rounded-full bg-slate-500';
+    };
+
+    window.toggleSafeZone = function() {
+      document.getElementById('caption-guide').classList.toggle('hidden');
+    };
+
+    window.reloadScene = function() {
+      location.reload();
+    };
+
+    function updatePlayIcons() {
+      document.getElementById('icon-pause').classList.toggle('hidden', !isPlaying);
+      document.getElementById('icon-play').classList.toggle('hidden', isPlaying);
+    }
+
+    async function initStudio() {
+      const q = new URLSearchParams(location.search);
+      const projPath = q.get('project') || 'projects/asset-showcase';
+
+      // Load config & story
+      const cfg = await (await fetch(`/${projPath}/config.json`)).json();
+      const story = await (await fetch(`/${projPath}/story/shots.json`)).json();
+
+      document.getElementById('proj-title').textContent = story.title || cfg.title || 'Studio Review';
+      const isVertical = (cfg.aspect || '16:9') === '9:16';
+      document.getElementById('badge-aspect').textContent = isVertical ? '9:16 Shorts' : '16:9 Widescreen';
+
+      const dur = story.duration || (story.shots[story.shots.length - 1]?.end || 20);
+      document.getElementById('timeline-slider').max = dur;
+
+      // Adjust viewport aspect ratio
+      const stageFrame = document.getElementById('stage-frame');
+      if (isVertical) {
+        stageFrame.style.height = 'min(78vh, 780px)';
+        stageFrame.style.aspectRatio = '9 / 16';
+      } else {
+        stageFrame.style.width = 'min(58vw, 840px)';
+        stageFrame.style.aspectRatio = '16 / 9';
+      }
+
+      beats = story.shots || [];
+      buildBeatCards();
+
+      // Hook scrubber
+      const slider = document.getElementById('timeline-slider');
+      slider.addEventListener('input', (e) => {
+        window.CURRENT_TIME = parseFloat(e.target.value);
+        if (window.renderFrame && window.E) {
+          window.renderFrame(Math.round(window.CURRENT_TIME * window.E.fps));
+        }
+      });
+
+      // Playback loop
+      function loop(now) {
+        const dt = Math.min(0.05, (now - lastFrameTime) / 1000);
+        lastFrameTime = now;
+
+        if (isPlaying && window.READY && window.E) {
+          window.CURRENT_TIME = (window.CURRENT_TIME || 0) + dt;
+
+          // Handle loop beat
+          if (loopBeat && beats[currentBeatIndex]) {
+            const b = beats[currentBeatIndex];
+            if (window.CURRENT_TIME >= b.end) {
+              window.CURRENT_TIME = b.start;
+            }
+          } else if (window.CURRENT_TIME >= dur) {
+            window.CURRENT_TIME = 0;
+          }
+
+          slider.value = window.CURRENT_TIME;
+          document.getElementById('hud-time').textContent = `${window.CURRENT_TIME.toFixed(2)}s / ${dur.toFixed(2)}s`;
+          updateActiveBeatCard();
+
+          if (window.renderFrame) {
+            window.renderFrame(Math.round(window.CURRENT_TIME * window.E.fps));
+          }
+        }
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+    }
+
+    function buildBeatCards() {
+      const container = document.getElementById('beats-container');
+      container.innerHTML = '';
+
+      beats.forEach((b, i) => {
+        const card = document.createElement('div');
+        card.id = `beat-card-${i}`;
+        card.className = 'p-3 rounded-2xl border border-slate-800 bg-slate-950/60 transition flex flex-col gap-2';
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between cursor-pointer" onclick="jumpToBeat(${i})">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mono">${b.start.toFixed(1)}s – ${b.end.toFixed(1)}s</span>
+              <div class="text-xs font-extrabold text-white mt-0.5">${b.notes || b.line || b.id}</div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button onclick="event.stopPropagation(); setBeatStatus(${i}, 'approved')" class="px-2 py-1 rounded-lg text-[10px] font-bold bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 border border-emerald-500/30">
+                ✓ Approve
+              </button>
+              <button onclick="event.stopPropagation(); setBeatStatus(${i}, 'tweak')" class="px-2 py-1 rounded-lg text-[10px] font-bold bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border border-amber-500/30">
+                ⚠️ Tweak
+              </button>
+            </div>
+          </div>
+          <div id="beat-note-box-${i}" class="hidden pt-1 border-t border-slate-800/80">
+            <input id="note-input-${i}" placeholder="Type bug or timing correction..." class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1 text-xs text-slate-200 focus:outline-none focus:border-amber-400">
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      updateApprovedCounter();
+    }
+
+    window.jumpToBeat = function(i) {
+      currentBeatIndex = i;
+      if (beats[i]) {
+        window.CURRENT_TIME = beats[i].start;
+        document.getElementById('timeline-slider').value = beats[i].start;
+      }
+    };
+
+    window.setBeatStatus = function(i, status) {
+      reviewData[i] = reviewData[i] || {};
+      reviewData[i].status = status;
+
+      const card = document.getElementById(`beat-card-${i}`);
+      const noteBox = document.getElementById(`beat-note-box-${i}`);
+
+      if (status === 'approved') {
+        card.classList.add('border-emerald-500/50', 'bg-emerald-950/20');
+        card.classList.remove('border-amber-500/50', 'bg-amber-950/20');
+        noteBox.classList.add('hidden');
+      } else if (status === 'tweak') {
+        card.classList.add('border-amber-500/50', 'bg-amber-950/20');
+        card.classList.remove('border-emerald-500/50', 'bg-emerald-950/20');
+        noteBox.classList.remove('hidden');
+      }
+      updateApprovedCounter();
+    };
+
+    window.approveAllBeats = function() {
+      beats.forEach((_, i) => window.setBeatStatus(i, 'approved'));
+    };
+
+    function updateApprovedCounter() {
+      const approved = Object.values(reviewData).filter(v => v.status === 'approved').length;
+      document.getElementById('badge-approved-count').textContent = `${approved} / ${beats.length} Beats Approved`;
+    }
+
+    function updateActiveBeatCard() {
+      const t = window.CURRENT_TIME || 0;
+      beats.forEach((b, i) => {
+        const card = document.getElementById(`beat-card-${i}`);
+        if (!card) return;
+        if (t >= b.start && t < b.end) {
+          currentBeatIndex = i;
+          card.classList.add('ring-1', 'ring-sky-400/80');
+        } else {
+          card.classList.remove('ring-1', 'ring-sky-400/80');
+        }
+      });
+    }
+
+    window.triggerCloudRender = async function() {
+      const btn = document.getElementById('btn-cloud-render');
+      const status = document.getElementById('cloud-status');
+      btn.disabled = true;
+      btn.textContent = '⏳ Dispatching to GitHub Actions...';
+      status.classList.remove('hidden');
+      status.textContent = 'Triggering cloud parallel matrix render...';
+
+      try {
+        const q = new URLSearchParams(location.search);
+        const proj = q.get('project') || 'projects/asset-showcase';
+        const res = await fetch(`/api/cloud-render?project=${encodeURIComponent(proj)}`, { method: 'POST' });
+        const json = await res.json();
+        if (json.ok) {
+          status.textContent = '✅ Cloud render started! Check GitHub Actions tab.';
+          btn.textContent = '🚀 Cloud Render In Progress';
+        } else {
+          status.textContent = '⚠️ ' + (json.error || 'Failed to start cloud render');
+          btn.disabled = false;
+          btn.textContent = 'Retry Cloud Render';
+        }
+      } catch (e) {
+        status.textContent = '⚠️ Error: ' + e.message;
+        btn.disabled = false;
+        btn.textContent = 'Retry Cloud Render';
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', initStudio);
+  </script>
+</body>
+</html>
