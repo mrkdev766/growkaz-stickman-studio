@@ -58,6 +58,7 @@
     </div>
 
     <!-- Quick Playback Transport Bar under Canvas -->
+    <audio id="audio-track" preload="auto" class="hidden"></audio>
     <div class="w-full bg-slate-900/90 border border-slate-800/80 p-3 rounded-2xl flex items-center gap-3">
       <button id="btn-play" onclick="togglePlay()" class="w-10 h-10 rounded-xl bg-orange-500 hover:bg-orange-400 text-slate-950 flex items-center justify-center font-bold transition shadow-lg shadow-orange-500/20">
         <svg id="icon-pause" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
@@ -134,20 +135,37 @@
   <script type="module">
     import { E, V, setStyle, getShot, clamp, ease, prog, alpha, text } from '/engine/player.js';
 
-    let isPlaying = true;
+    window.E = E;
+    window.CURRENT_TIME = 0;
+
+    let isPlaying = false;
     let loopBeat = false;
     let currentBeatIndex = 0;
     let beats = [];
     let reviewData = {};
     let lastFrameTime = performance.now();
+    let audioElem = null;
 
     window.togglePlay = function() {
       isPlaying = !isPlaying;
       updatePlayIcons();
+      if (audioElem) {
+        if (isPlaying) {
+          audioElem.currentTime = window.CURRENT_TIME || 0;
+          audioElem.play().catch(() => {});
+        } else {
+          audioElem.pause();
+        }
+      }
     };
 
     window.toggleLoopBeat = function() {
       loopBeat = !loopBeat;
+      document.getElementById('loop-dot').className = loopBeat ? 'w-2 h-2 rounded-full bg-emerald-400' : 'w-2 h-2 rounded-full bg-slate-500';
+    };
+
+    window.setLoopBeat = function(val) {
+      loopBeat = val;
       document.getElementById('loop-dot').className = loopBeat ? 'w-2 h-2 rounded-full bg-emerald-400' : 'w-2 h-2 rounded-full bg-slate-500';
     };
 
@@ -172,6 +190,11 @@
       const cfg = await (await fetch(`/${projPath}/config.json`)).json();
       const story = await (await fetch(`/${projPath}/story/shots.json`)).json();
 
+      audioElem = document.getElementById('audio-track');
+      if (cfg.voiceover && audioElem) {
+        audioElem.src = `/${projPath}/${cfg.voiceover}`;
+      }
+
       document.getElementById('proj-title').textContent = story.title || cfg.title || 'Studio Review';
       const isVertical = (cfg.aspect || '16:9') === '9:16';
       document.getElementById('badge-aspect').textContent = isVertical ? '9:16 Shorts' : '16:9 Widescreen';
@@ -195,14 +218,18 @@
 
       beats = story.shots || [];
       buildBeatCards();
+      updatePlayIcons();
 
       // Hook scrubber
       const slider = document.getElementById('timeline-slider');
       slider.addEventListener('input', (e) => {
         window.CURRENT_TIME = parseFloat(e.target.value);
+        if (audioElem) audioElem.currentTime = window.CURRENT_TIME;
         if (window.renderFrame && window.E) {
           window.renderFrame(Math.round(window.CURRENT_TIME * window.E.fps));
         }
+        document.getElementById('hud-time').textContent = `${window.CURRENT_TIME.toFixed(2)}s / ${dur.toFixed(2)}s`;
+        updateActiveBeatCard();
       });
 
       // Playback loop
@@ -211,16 +238,22 @@
         lastFrameTime = now;
 
         if (isPlaying && window.READY && window.E) {
-          window.CURRENT_TIME = (window.CURRENT_TIME || 0) + dt;
+          if (audioElem && !audioElem.paused && !audioElem.ended) {
+            window.CURRENT_TIME = audioElem.currentTime;
+          } else {
+            window.CURRENT_TIME = (window.CURRENT_TIME || 0) + dt;
+          }
 
           // Handle loop beat
           if (loopBeat && beats[currentBeatIndex]) {
             const b = beats[currentBeatIndex];
             if (window.CURRENT_TIME >= b.end) {
               window.CURRENT_TIME = b.start;
+              if (audioElem) audioElem.currentTime = b.start;
             }
           } else if (window.CURRENT_TIME >= dur) {
             window.CURRENT_TIME = 0;
+            if (audioElem) audioElem.currentTime = 0;
           }
 
           slider.value = window.CURRENT_TIME;
@@ -230,6 +263,9 @@
           if (window.renderFrame) {
             window.renderFrame(Math.round(window.CURRENT_TIME * window.E.fps));
           }
+        } else if (window.READY && window.renderFrame && window.E) {
+          // Render current paused/scrubbed frame
+          window.renderFrame(Math.round((window.CURRENT_TIME || 0) * window.E.fps));
         }
         requestAnimationFrame(loop);
       }
@@ -243,10 +279,10 @@
       beats.forEach((b, i) => {
         const card = document.createElement('div');
         card.id = `beat-card-${i}`;
-        card.className = 'p-3 rounded-2xl border border-slate-800 bg-slate-950/60 transition flex flex-col gap-2';
+        card.className = 'p-3 rounded-2xl border border-slate-800 bg-slate-950/60 transition flex flex-col gap-2 cursor-pointer';
 
         card.innerHTML = `
-          <div class="flex items-center justify-between cursor-pointer" onclick="jumpToBeat(${i})">
+          <div class="flex items-center justify-between" onclick="jumpToBeat(${i})">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mono">${b.start.toFixed(1)}s – ${b.end.toFixed(1)}s</span>
               <div class="text-xs font-extrabold text-white mt-0.5">${b.notes || b.line || b.id}</div>
@@ -274,6 +310,14 @@
       if (beats[i]) {
         window.CURRENT_TIME = beats[i].start;
         document.getElementById('timeline-slider').value = beats[i].start;
+        if (audioElem) {
+          audioElem.currentTime = beats[i].start;
+          if (isPlaying) audioElem.play().catch(() => {});
+        }
+        if (window.renderFrame && window.E) {
+          window.renderFrame(Math.round(window.CURRENT_TIME * window.E.fps));
+        }
+        updateActiveBeatCard();
       }
     };
 
@@ -292,6 +336,10 @@
         card.classList.add('border-amber-500/50', 'bg-amber-950/20');
         card.classList.remove('border-emerald-500/50', 'bg-emerald-950/20');
         noteBox.classList.remove('hidden');
+        // Jump to beat, loop it, and start playing!
+        window.setLoopBeat(true);
+        window.jumpToBeat(i);
+        if (!isPlaying) window.togglePlay();
       }
       updateApprovedCounter();
     };
