@@ -1,0 +1,54 @@
+{
+  "title": "The Face Swap Dilemma",
+  "duration": 16.44,
+  "shots": [
+    {
+      "id": "s01",
+      "start": 0.0,
+      "end": 5.0,
+      "line": "Have you ever imagined, what if you could swap faces with anyone?",
+      "scene": "s01",
+      "notes": "Biometric Mirror — Smart mirror reflection, 3D face-mesh wireframe scan, biometric HUD"
+    },
+    {
+      "id": "s02",
+      "start": 5.0,
+      "end": 6.8,
+      "line": "Your father...",
+      "scene": "s02",
+      "notes": "The Dad Face — Magnetic snap, bushy mustache, reading glasses, steaming coffee mug"
+    },
+    {
+      "id": "s03",
+      "start": 6.8,
+      "end": 8.4,
+      "line": "Your crush...",
+      "scene": "s03",
+      "notes": "The Crush Face — Anime bloom, sparkle eyes, blushing cheeks, floating hearts, shy wave"
+    },
+    {
+      "id": "s04",
+      "start": 8.4,
+      "end": 10.3,
+      "line": "Even the president?",
+      "scene": "s04",
+      "notes": "The President — Camera flash, silver hair swoop, red power tie, secret service earpiece"
+    },
+    {
+      "id": "s05",
+      "start": 10.3,
+      "end": 14.5,
+      "line": "Or imagine waking up with your favorite movie star's face?",
+      "scene": "s05",
+      "notes": "Hollywood Chad — Golden spotlight, chiseled jaw, sunglasses drop, tooth glint ding, flexing laugh"
+    },
+    {
+      "id": "s06",
+      "start": 14.5,
+      "end": 16.44,
+      "line": "Sounds amazing, right?",
+      "scene": "s06",
+      "notes": "The Glitch Punchline — Face glitch tear, mask peels off, bewildered stickman, end card"
+    }
+  ]
+}

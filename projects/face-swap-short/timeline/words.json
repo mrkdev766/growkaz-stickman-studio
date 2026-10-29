@@ -1,0 +1,165 @@
+{
+  "source": "script-aligned",
+  "words": [
+    {
+      "word": "Have",
+      "start": 0.05,
+      "end": 0.28
+    },
+    {
+      "word": "you",
+      "start": 0.28,
+      "end": 0.42
+    },
+    {
+      "word": "ever",
+      "start": 0.42,
+      "end": 0.75
+    },
+    {
+      "word": "imagined,",
+      "start": 0.75,
+      "end": 1.48
+    },
+    {
+      "word": "what",
+      "start": 2.05,
+      "end": 2.25
+    },
+    {
+      "word": "if",
+      "start": 2.25,
+      "end": 2.38
+    },
+    {
+      "word": "you",
+      "start": 2.38,
+      "end": 2.5
+    },
+    {
+      "word": "could",
+      "start": 2.5,
+      "end": 2.72
+    },
+    {
+      "word": "swap",
+      "start": 2.72,
+      "end": 3.12
+    },
+    {
+      "word": "faces",
+      "start": 3.12,
+      "end": 3.65
+    },
+    {
+      "word": "with",
+      "start": 3.65,
+      "end": 3.88
+    },
+    {
+      "word": "anyone?",
+      "start": 3.88,
+      "end": 4.6
+    },
+    {
+      "word": "Your",
+      "start": 5.2,
+      "end": 5.48
+    },
+    {
+      "word": "father,",
+      "start": 5.48,
+      "end": 6.2
+    },
+    {
+      "word": "your",
+      "start": 6.85,
+      "end": 7.1
+    },
+    {
+      "word": "crush,",
+      "start": 7.1,
+      "end": 7.8
+    },
+    {
+      "word": "even",
+      "start": 8.4,
+      "end": 8.75
+    },
+    {
+      "word": "the",
+      "start": 8.75,
+      "end": 8.92
+    },
+    {
+      "word": "president?",
+      "start": 8.92,
+      "end": 9.85
+    },
+    {
+      "word": "Or",
+      "start": 10.3,
+      "end": 10.5
+    },
+    {
+      "word": "imagine",
+      "start": 10.5,
+      "end": 10.95
+    },
+    {
+      "word": "waking",
+      "start": 10.95,
+      "end": 11.35
+    },
+    {
+      "word": "up",
+      "start": 11.35,
+      "end": 11.55
+    },
+    {
+      "word": "with",
+      "start": 11.55,
+      "end": 11.75
+    },
+    {
+      "word": "your",
+      "start": 11.75,
+      "end": 11.95
+    },
+    {
+      "word": "favorite",
+      "start": 11.95,
+      "end": 12.42
+    },
+    {
+      "word": "movie",
+      "start": 12.42,
+      "end": 12.78
+    },
+    {
+      "word": "star's",
+      "start": 12.78,
+      "end": 13.25
+    },
+    {
+      "word": "face?",
+      "start": 13.25,
+      "end": 13.78
+    },
+    {
+      "word": "Sounds",
+      "start": 14.85,
+      "end": 15.35
+    },
+    {
+      "word": "amazing,",
+      "start": 15.35,
+      "end": 15.9
+    },
+    {
+      "word": "right?",
+      "start": 15.9,
+      "end": 16.35
+    }
+  ]
+}

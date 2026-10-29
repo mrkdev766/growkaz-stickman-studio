@@ -1,0 +1,24 @@
+{
+  "sentences": [
+    {
+      "text": "Have you ever imagined, what if you could swap faces with anyone?",
+      "start": 0.05,
+      "end": 4.6
+    },
+    {
+      "text": "Your father, your crush, even the president?",
+      "start": 5.2,
+      "end": 9.85
+    },
+    {
+      "text": "Or imagine waking up with your favorite movie star's face?",
+      "start": 10.3,
+      "end": 14.2
+    },
+    {
+      "text": "Sounds amazing, right?",
+      "start": 14.85,
+      "end": 16.35
+    }
+  ]
+}
