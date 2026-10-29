@@ -33,6 +33,12 @@
       background: #00e5ff; margin-top: -5px; cursor: pointer;
       box-shadow: 0 0 10px rgba(0, 229, 255, 0.8); border: 2px solid #ffffff;
     }
+    canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain;
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col xl:flex-row items-center justify-center p-4 xl:p-6 gap-6">
@@ -175,6 +181,7 @@
 
       const dur = story.duration || (story.shots[story.shots.length - 1]?.end || 20);
       document.getElementById('timeline-slider').max = dur;
+      document.getElementById('hud-time').textContent = `0.00s / ${dur.toFixed(2)}s`;
 
       // Adjust viewport aspect ratio
       const stageFrame = document.getElementById('stage-frame');
@@ -340,7 +347,11 @@
       }
     };
 
-    window.addEventListener('DOMContentLoaded', initStudio);
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', initStudio);
+    } else {
+      initStudio();
+    }
   </script>
 </body>
 </html>

@@ -4,6 +4,8 @@ import { E, V, setStyle, getShot, clamp, ease, prog, alpha, text, FONTS } from '
 import { STYLES } from './styles.js';
 import { captions } from './ui2d.js';
 
+export { E, V, setStyle, getShot, clamp, ease, prog, alpha, text };
+
 const q = new URLSearchParams(location.search);
 const PROJ = '/project';
 const RES = { '720p': 720, '1080p': 1080, '1440p': 1440, '2160p': 2160, '4k': 2160 };
