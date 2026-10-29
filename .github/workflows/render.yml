@@ -110,8 +110,8 @@ jobs:
           sed 's/^/file \x27/' chunks_found.txt | sed 's/$/\x27/' > concat_list.txt
           ffmpeg -y -f concat -safe 0 -i concat_list.txt -c copy "dist/${NAME}_silent.mp4"
           
-          # Check for audio file in project
-          AUDIO_SRC=$(find "$PROJ/audio" -name "*.wav" -o -name "*.mp3" 2>/dev/null | head -n 1)
+          # Check for audio file in project (audio/ or input/)
+          AUDIO_SRC=$(find "$PROJ/audio" "$PROJ/input" -name "*.wav" -o -name "*.mp3" 2>/dev/null | head -n 1)
           if [ -n "$AUDIO_SRC" ]; then
             echo "Muxing audio from $AUDIO_SRC"
             ffmpeg -y -i "dist/${NAME}_silent.mp4" -i "$AUDIO_SRC" -c:v copy -c:a aac -b:a 192k -shortest "dist/${NAME}_finished.mp4"
