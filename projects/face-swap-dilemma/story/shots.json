@@ -1,0 +1,1263 @@
+{
+ "title": "The Face Swap Dilemma",
+ "duration": 259.108,
+ "shots": [
+  {
+   "id": "s001",
+   "start": 0.0,
+   "end": 3.85,
+   "line": "Imagine waking up tomorrow with the face of the most powerful person on earth.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "shimmer",
+     "gain": -8
+    }
+   ],
+   "notes": "",
+   "amb": {
+    "name": "roomtone",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s002",
+   "start": 3.85,
+   "end": 7.85,
+   "line": "Your reflection is no longer yours.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.1,
+     "name": "stinger",
+     "gain": -6
+    }
+   ],
+   "notes": "",
+   "amb": {
+    "name": "roomtone",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s003",
+   "start": 7.85,
+   "end": 9.816,
+   "line": "Your voice is the same.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "roomtone",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s004",
+   "start": 9.816,
+   "end": 13.668,
+   "line": "Your memories are intact, but your face...",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "roomtone",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s005",
+   "start": 13.668,
+   "end": 15.85,
+   "line": "completely different.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "roomtone",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s006",
+   "start": 15.85,
+   "end": 17.85,
+   "line": "And here's the terrifying part:",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s007",
+   "start": 17.85,
+   "end": 21.85,
+   "line": "nobody can prove who you really are.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s008",
+   "start": 21.85,
+   "end": 25.85,
+   "line": "Let's say you discover a strange ability.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s009",
+   "start": 25.85,
+   "end": 29.85,
+   "line": "With a single thought, you can swap your face with anyone on the planet.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "powerup",
+     "gain": -7
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": "s010",
+   "start": 29.85,
+   "end": 31.1,
+   "line": "Not a mask.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s011",
+   "start": 31.1,
+   "end": 32.85,
+   "line": "Not a photograph.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s012",
+   "start": 32.85,
+   "end": 35.85,
+   "line": "Your actual appearance changes.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 1.2,
+     "name": "whoosh",
+     "gain": -8
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": "s013",
+   "start": 35.85,
+   "end": 40.85,
+   "line": "You could look like a celebrity, a billionaire, your best friend, or a complete stranger.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s014",
+   "start": 40.85,
+   "end": 44.85,
+   "line": "At first, it sounds like the ultimate superpower.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s015",
+   "start": 44.85,
+   "end": 47.85,
+   "line": "But let's see what happens when you actually use it.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s016",
+   "start": 47.85,
+   "end": 50.85,
+   "line": "On day one, you experiment.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "murmur",
+    "gain": -22
+   }
+  },
+  {
+   "id": "s017",
+   "start": 50.85,
+   "end": 53.85,
+   "line": "You walk into a caf\u00e9 looking like a famous actor.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "murmur",
+    "gain": -22
+   }
+  },
+  {
+   "id": "s018",
+   "start": 53.85,
+   "end": 55.85,
+   "line": "People recognize the face instantly.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "murmur",
+    "gain": -22
+   }
+  },
+  {
+   "id": "s019",
+   "start": 55.85,
+   "end": 59.85,
+   "line": "They stare, whisper, and ask for selfies.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 1.2,
+     "name": "flash",
+     "gain": -8
+    },
+    {
+     "at": 2.8,
+     "name": "flash",
+     "gain": -8
+    }
+   ],
+   "notes": "",
+   "amb": {
+    "name": "murmur",
+    "gain": -22
+   }
+  },
+  {
+   "id": "s020",
+   "start": 59.85,
+   "end": 63.85,
+   "line": "For the first time, strangers treat you like someone important.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "murmur",
+    "gain": -22
+   }
+  },
+  {
+   "id": "s021",
+   "start": 63.85,
+   "end": 65.85,
+   "line": "Then you change back.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.8,
+     "name": "whoosh",
+     "gain": -8
+    }
+   ],
+   "notes": "",
+   "amb": {
+    "name": "murmur",
+    "gain": -22
+   }
+  },
+  {
+   "id": "s022",
+   "start": 65.85,
+   "end": 68.85,
+   "line": "Suddenly, you're invisible again.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "murmur",
+    "gain": -22
+   }
+  },
+  {
+   "id": "s023",
+   "start": 68.85,
+   "end": 71.85,
+   "line": "And you realize something uncomfortable.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s024",
+   "start": 71.85,
+   "end": 74.85,
+   "line": "People haven't changed their behavior because of who you are,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s025",
+   "start": 74.85,
+   "end": 78.85,
+   "line": "they've changed it because of what your face represents.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s026",
+   "start": 78.85,
+   "end": 81.85,
+   "line": "But that's only the beginning.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s027",
+   "start": 81.85,
+   "end": 84.85,
+   "line": "You decide to test something more personal.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s028",
+   "start": 84.85,
+   "end": 87.85,
+   "line": "You swap faces with someone your family knows.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s029",
+   "start": 87.85,
+   "end": 89.85,
+   "line": "Then you walk through your own front door.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "footstep",
+     "gain": -10
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": "s030",
+   "start": 89.85,
+   "end": 92.85,
+   "line": "Your mother sees a stranger.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s031",
+   "start": 92.85,
+   "end": 95.85,
+   "line": "Your best friend doesn't recognize you.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s032",
+   "start": 95.85,
+   "end": 99.85,
+   "line": "Your partner steps back, wondering who just entered the room.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s033",
+   "start": 99.85,
+   "end": 105.85,
+   "line": "You know their birthdays, their secrets, the memories nobody else shares.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s034",
+   "start": 105.85,
+   "end": 109.632,
+   "line": "But to them, you're an unfamiliar face,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s035",
+   "start": 109.632,
+   "end": 112.85,
+   "line": "claiming to be someone they love.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s036",
+   "start": 112.85,
+   "end": 114.85,
+   "line": "You could tell them everything.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s037",
+   "start": 114.85,
+   "end": 117.85,
+   "line": "Would they believe you?",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s038",
+   "start": 117.85,
+   "end": 121.85,
+   "line": "Now imagine the consequences outside your home.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "city",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s039",
+   "start": 121.85,
+   "end": 123.85,
+   "line": "Your phone unlocks with your face.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 1.0,
+     "name": "ding",
+     "gain": -8
+    }
+   ],
+   "notes": "",
+   "amb": {
+    "name": "city",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s040",
+   "start": 123.85,
+   "end": 125.85,
+   "line": "Security cameras record you.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "city",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s041",
+   "start": 125.85,
+   "end": 128.85,
+   "line": "People identify you through photographs.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "city",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s042",
+   "start": 128.85,
+   "end": 133.85,
+   "line": "But what happens when your face no longer matches your official identity?",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.5,
+     "name": "glitch",
+     "gain": -8
+    }
+   ],
+   "notes": "",
+   "amb": {
+    "name": "city",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s043",
+   "start": 133.85,
+   "end": 135.85,
+   "line": "Some systems might reject you.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "impact",
+     "gain": -6
+    }
+   ],
+   "notes": "",
+   "amb": {
+    "name": "city",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s044",
+   "start": 135.85,
+   "end": 138.85,
+   "line": "Others might mistake you for someone else.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s045",
+   "start": 138.85,
+   "end": 141.85,
+   "line": "And if someone commits a crime while wearing your face,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s046",
+   "start": 141.85,
+   "end": 145.85,
+   "line": "how do you prove you weren't there?",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s047",
+   "start": 145.85,
+   "end": 149.85,
+   "line": "In a world built around recognizing appearances,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s048",
+   "start": 149.85,
+   "end": 152.85,
+   "line": "your greatest power becomes your greatest vulnerability.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s049",
+   "start": 152.85,
+   "end": 156.85,
+   "line": "Now imagine discovering something even more dangerous.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "hum",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s050",
+   "start": 156.85,
+   "end": 159.85,
+   "line": "You can become someone people trust.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "hum",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s051",
+   "start": 159.85,
+   "end": 161.968,
+   "line": "Someone with influence.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "hum",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s052",
+   "start": 161.968,
+   "end": 163.85,
+   "line": "Someone with access.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "whoosh",
+     "gain": -10
+    }
+   ],
+   "notes": "",
+   "amb": {
+    "name": "hum",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s053",
+   "start": 163.85,
+   "end": 167.85,
+   "line": "Someone whose face opens doors that would otherwise remain closed.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "hum",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s054",
+   "start": 167.85,
+   "end": 170.85,
+   "line": "But every time you use that power to deceive someone,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s055",
+   "start": 170.85,
+   "end": 175.85,
+   "line": "you risk destroying the very thing that makes relationships meaningful.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 1.2,
+     "name": "impact",
+     "gain": -7
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": "s056",
+   "start": 175.85,
+   "end": 178.85,
+   "line": "Trust.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s057",
+   "start": 178.85,
+   "end": 181.85,
+   "line": "And then comes the question you never expected to ask yourself.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s058",
+   "start": 181.85,
+   "end": 184.85,
+   "line": "If you can become anyone,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s059",
+   "start": 184.85,
+   "end": 190.85,
+   "line": "how long before you stop knowing who you are? Here's the real twist.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s060",
+   "start": 190.85,
+   "end": 196.85,
+   "line": "The most valuable thing about your face was never your appearance.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s061",
+   "start": 196.85,
+   "end": 199.85,
+   "line": "It was the connection people built around it.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s062",
+   "start": 199.85,
+   "end": 204.85,
+   "line": "Your face was how your family recognized you, how friends remembered you,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s063",
+   "start": 204.85,
+   "end": 208.85,
+   "line": "and how strangers began to trust or distrust you.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s064",
+   "start": 208.85,
+   "end": 212.85,
+   "line": "Change that face, and you might change how the world treats you,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s065",
+   "start": 212.85,
+   "end": 215.85,
+   "line": "but you don't automatically change your memories,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s066",
+   "start": 215.85,
+   "end": 220.85,
+   "line": "your choices, or the person you've become.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s067",
+   "start": 220.85,
+   "end": 224.85,
+   "line": "And if nobody can recognize you anymore, you'll discover something terrifying:",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s068",
+   "start": 224.85,
+   "end": 228.85,
+   "line": "being known and being seen are not the same thing.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s069",
+   "start": 228.85,
+   "end": 233.85,
+   "line": "So if you could swap faces with anyone on earth for just 24 hours,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s070",
+   "start": 233.85,
+   "end": 235.85,
+   "line": "who would you choose?",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s071",
+   "start": 235.85,
+   "end": 241.85,
+   "line": "And more importantly, would you use that power to experience another life,",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s072",
+   "start": 241.85,
+   "end": 246.85,
+   "line": "or to escape your own?",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": ""
+  },
+  {
+   "id": "s073",
+   "start": 246.85,
+   "end": 251.85,
+   "line": "Tell me in the comments, because the next time you look in a mirror, remember this:",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [],
+   "notes": "",
+   "amb": {
+    "name": "roomtone",
+    "gain": -24
+   }
+  },
+  {
+   "id": "s074",
+   "start": 251.85,
+   "end": 259.108,
+   "line": "your face might be what the world sees first, but it isn't everything you are.",
+   "scene": "TODO",
+   "set": null,
+   "bars": null,
+   "in": {
+    "type": "cut"
+   },
+   "sfx": [
+    {
+     "at": 0.5,
+     "name": "shimmer",
+     "gain": -6
+    }
+   ],
+   "notes": "",
+   "amb": {
+    "name": "roomtone",
+    "gain": -24
+   }
+  }
+ ],
+ "music": [
+  {
+   "start": 0.0,
+   "end": 47.9,
+   "mood": "mystery",
+   "intensity": 0.5
+  },
+  {
+   "start": 47.9,
+   "end": 81.8,
+   "mood": "playful",
+   "intensity": 0.6
+  },
+  {
+   "start": 81.8,
+   "end": 117.8,
+   "mood": "tension",
+   "intensity": 0.55
+  },
+  {
+   "start": 117.8,
+   "end": 152.8,
+   "mood": "dark",
+   "intensity": 0.65
+  },
+  {
+   "start": 152.8,
+   "end": 190.8,
+   "mood": "tension",
+   "intensity": 0.6
+  },
+  {
+   "start": 190.8,
+   "end": 259.108,
+   "mood": "hopeful",
+   "intensity": 0.65
+  }
+ ]
+}

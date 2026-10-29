@@ -1,0 +1,15 @@
+{
+  "title": "Sleek Showcase",
+  "aspect": "16:9",
+  "resolution": "720p",
+  "fps": 24,
+  "style": "emerald",
+  "duration": 10.0,
+  "captions": false,
+  "bars": null,
+  "fadeIn": 0.3,
+  "fadeOut": 0.5,
+  "music": { "enabled": false },
+  "sfx": { "enabled": false }
+}
+

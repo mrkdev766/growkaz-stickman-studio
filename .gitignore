@@ -1,0 +1,16 @@
+node_modules/
+build/
+out/
+projects/*/build/
+projects/*/out/
+projects/*/cloud/
+projects/*/input/*.wav
+audio/test_10s.wav
+cloud/
+*.zip
+*.mp4
+*.png
+*.jpg.tmp
+__pycache__/
+*.pyc
+.DS_Store

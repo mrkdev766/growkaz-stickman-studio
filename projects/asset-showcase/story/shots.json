@@ -1,0 +1,39 @@
+{
+  "title": "Asset Showcase",
+  "duration": 20.0,
+  "shots": [
+    {
+      "id": "s01",
+      "start": 0.0,
+      "end": 5.0,
+      "line": "Case File: The Dark Web",
+      "scene": "s01",
+      "notes": "Noir Detective — imagePlate BG + investigator cast + vignette + letterbox"
+    },
+    {
+      "id": "s02",
+      "start": 5.0,
+      "end": 10.0,
+      "line": "The Cyber Underground",
+      "scene": "s02",
+      "notes": "Cyberpunk City — imagePlate parallax + technologist walking + CRT scanlines"
+    },
+    {
+      "id": "s03",
+      "start": 10.0,
+      "end": 15.0,
+      "line": "Breaking: Global Data Breach",
+      "scene": "s03",
+      "notes": "Newsroom — imagePlate BG + host cast + breakingNewsDesk + worldDataMap + liveCounter"
+    },
+    {
+      "id": "s04",
+      "start": 15.0,
+      "end": 20.0,
+      "line": "Beyond The Dimension",
+      "scene": "s04",
+      "notes": "3D Cosmic — globe3D spinning in cosmic void + tesseract3D"
+    }
+  ]
+}
+

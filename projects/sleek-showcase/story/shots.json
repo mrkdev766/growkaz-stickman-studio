@@ -1,0 +1,31 @@
+{
+  "title": "Sleek Showcase",
+  "duration": 10.0,
+  "shots": [
+    {
+      "id": "s01",
+      "start": 0.0,
+      "end": 3.5,
+      "line": "Sleek Animation Unlocked",
+      "scene": "s01",
+      "notes": "Awaken Character Rig & 2.5D City Parallax"
+    },
+    {
+      "id": "s02",
+      "start": 3.5,
+      "end": 7.0,
+      "line": "Global Broadcast Active",
+      "scene": "s02",
+      "notes": "Breaking Newsroom & Hologram Counters"
+    },
+    {
+      "id": "s03",
+      "start": 7.0,
+      "end": 10.0,
+      "line": "Dimension Four Initiated",
+      "scene": "s03",
+      "notes": "IFinity Hood & 3D Rotating Tesseract"
+    }
+  ]
+}
+

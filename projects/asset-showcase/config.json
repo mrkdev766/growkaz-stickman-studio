@@ -1,0 +1,15 @@
+{
+  "title": "Asset Showcase",
+  "aspect": "16:9",
+  "resolution": "720p",
+  "fps": 24,
+  "style": "emerald",
+  "duration": 20.0,
+  "captions": false,
+  "bars": null,
+  "fadeIn": 0.4,
+  "fadeOut": 0.6,
+  "music": { "enabled": false },
+  "sfx": { "enabled": false }
+}
+

@@ -1,0 +1,126 @@
+name: Cloud Render Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'Project directory (e.g. projects/asset-showcase)'
+        required: true
+        default: 'projects/asset-showcase'
+      chunks:
+        description: 'Number of parallel runners'
+        required: false
+        default: '4'
+      scale:
+        description: 'Resolution scale factor (1.0 = full res)'
+        required: false
+        default: '1.0'
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      duration: ${{ steps.set-matrix.outputs.duration }}
+      project_name: ${{ steps.set-matrix.outputs.project_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Calculate chunk intervals
+        id: set-matrix
+        run: |
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+            const proj = "${{ github.event.inputs.project || "projects/asset-showcase" }}";
+            const cfg = JSON.parse(fs.readFileSync(path.join(proj, "config.json"), "utf8"));
+            const dur = cfg.duration || 20;
+            const N = parseInt("${{ github.event.inputs.chunks || 4 }}") || 4;
+            const chunkDur = dur / N;
+            const matrix = [];
+            for (let i = 0; i < N; i++) {
+              const from = (i * chunkDur).toFixed(2);
+              const to = ((i + 1) * chunkDur).toFixed(2);
+              matrix.push({ chunk: i, from, to });
+            }
+            const projName = path.basename(proj);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, "duration=" + dur + "\n");
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, "project_name=" + projName + "\n");
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, "matrix=" + JSON.stringify(matrix) + "\n");
+          '
+
+  render-chunk:
+    needs: inspect
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        chunk_info: ${{ fromJson(needs.inspect.outputs.matrix) }}
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies & Playwright Chromium
+        run: |
+          npm ci || npm install
+          npx playwright install --with-deps chromium
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg xvfb
+      - name: Render Video Chunk ${{ matrix.chunk_info.chunk }}
+        run: |
+          PROJ="${{ github.event.inputs.project || 'projects/asset-showcase' }}"
+          mkdir -p "$PROJ/build/chunks"
+          xvfb-run -a -s "-screen 0 1920x1080x24" node render.mjs \
+            --project "$PROJ" \
+            --from ${{ matrix.chunk_info.from }} \
+            --to ${{ matrix.chunk_info.to }} \
+            --format jpeg \
+            --scale ${{ github.event.inputs.scale || '1.0' }} \
+            --gl swiftshader \
+            --workers 2 \
+            --out "$PROJ/build/chunks/chunk_${{ matrix.chunk_info.chunk }}.mp4"
+      - name: Upload Chunk Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chunk-${{ matrix.chunk_info.chunk }}
+          path: "${{ github.event.inputs.project || 'projects/asset-showcase' }}/build/chunks/chunk_${{ matrix.chunk_info.chunk }}.mp4"
+          retention-days: 1
+
+  assemble:
+    needs: [inspect, render-chunk]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Download all chunks
+        uses: actions/download-artifact@v4
+        with:
+          path: downloaded_chunks
+      - name: Concat Chunks and Mux Final Soundtrack
+        run: |
+          PROJ="${{ github.event.inputs.project || 'projects/asset-showcase' }}"
+          NAME="${{ needs.inspect.outputs.project_name }}"
+          mkdir -p dist
+          find downloaded_chunks -name "*.mp4" | sort -V > chunks_found.txt
+          echo "Found chunks:"
+          cat chunks_found.txt
+          sed 's/^/file \x27/' chunks_found.txt | sed 's/$/\x27/' > concat_list.txt
+          ffmpeg -y -f concat -safe 0 -i concat_list.txt -c copy "dist/${NAME}_silent.mp4"
+          
+          # Check for audio file in project
+          AUDIO_SRC=$(find "$PROJ/audio" -name "*.wav" -o -name "*.mp3" 2>/dev/null | head -n 1)
+          if [ -n "$AUDIO_SRC" ]; then
+            echo "Muxing audio from $AUDIO_SRC"
+            ffmpeg -y -i "dist/${NAME}_silent.mp4" -i "$AUDIO_SRC" -c:v copy -c:a aac -b:a 192k -shortest "dist/${NAME}_finished.mp4"
+          else
+            cp "dist/${NAME}_silent.mp4" "dist/${NAME}_finished.mp4"
+          fi
+      - name: Publish Finished Video
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ needs.inspect.outputs.project_name }}-video"
+          path: "dist/*_finished.mp4"
+          retention-days: 14
