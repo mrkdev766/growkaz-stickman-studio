@@ -545,3 +545,4 @@ export function speedLinesComic(g, t, opts = {}) {
   }
   g.restore();
 }
+
